@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conto alla Rovescia</title>
+</head>
+<body>
+
+
+<p>Contatore: <span id="conto"></span></p>
+
+<script>
+ 	function stampaTabelline(numero) {
+        for (let i = 1; i <= 10; i++) {
+            document.write(numero + " * " + i + " = " + (numero * i) + "<br>");
+        }
+        document.write("<br>");
+    }
+
+
+    function avviaContA() {
+
+        let conto = 1;
+
+       
+        function contA() {
+       
+            document.getElementById('conto').innerHTML = conto;
+
+            if (conto < 5) {
+                conto++;
+                setTimeout(contA, 1000); 
+            } else {
+for (let i = 1; i <= 10; i++) {
+    setTimeout(function() { stampaTabelline(i); }, 500 * i);
+}
+             
+            }
+        }
+        contA();
+    }
+    avviaContA();
+</script>
+
+</body>
+</html>
