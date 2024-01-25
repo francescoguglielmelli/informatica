@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .square {
+            width: 10px;
+            height: 10px;
+            margin: 2px;
+            display: inline-block;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 10px;
+            font-size: 8px;
+            position: relative;
+        }
+        .light-gray {
+            background-color: #9c9c9c;
+        }
+        .dark-gray {
+            background-color: #828282;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+            <script>
+                for (let i = 1; i <= 100; i++) {
+                    if (i % 2 === 0) {
+                        document.write('<div class="square light-gray" id="square' + i + '">' + i + '</div>');
+                    } else {
+                        document.write('<div class="square dark-gray" id="square' + i + '">' + i + '</div>');
+                    }
+                    if (i % 10 === 0) {
+                        document.write('<br>');
+                    }
+                }
+            </script>
+        </tbody>
+    </table>
 
+    <p id="randomNumberDisplay"></p>
+
+    <script>
+        // Funzione per generare e visualizzare un numero casuale
+        function generateRandomNumber() {
+            let randomNumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("randomNumberDisplay").innerText = "Numero casuale: " + randomNumber;
+
+            
+            let squareElement = document.getElementById("square" + randomNumber);
+            if (squareElement) {
+                let img = document.createElement("img");
+                img.style.position = "absolute";
+                img.style.top = 0;
+                img.style.left = 0;
+                img.style.width = "100%";
+                img.style.height = "100%";
+                squareElement.appendChild(img);
+
+                if (randomNumber % 2 === 0) {
+                    
+                    img.src = "https://images.app.goo.gl/sadgmUd7RURB9AFy6"; 
+                } else {
+                    
+                    img.src = "https://images.app.goo.gl/sadgmUd7RURB9AFy6";
+                }
+            }
+        }
+
+        
+        generateRandomNumber();
+    </script>
+</body>
+</html>
