@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .square {
+      width: 25px;
+      height: 25px;
+      margin: 4px;
+      display: inline-block;
+      text-align: center;
+      line-height: 10px;
+      font-size: 8px;
+    }
+    .light-gray {
+      background-color: #828282;
+    }
+    .dark-gray {
+      background-color: #9c9c9c;
+    }
+  </style>
+</head>
+<body>
+  <p>Counter Bombe: <span id="counter1">0</span></p>
+  <p>Counter Pizza: <span id="counter2">0</span></p>
+  <table>
+    <tbody>
+      <script>
+        for (let i = 1; i <= 100; i++) {
+          if (i % 2 === 0) {
+            document.write('<div class="square light-gray"><img src="bomba.jpg" alt="image1" height="25px" width="25px" onclick="incrementCounter1()"></div>');
+          } else {
+            document.write('<div class="square dark-gray"><img src="pizza.jpg" alt="image2" height="25px" width="25px" onclick="incrementCounter2()"></div>');
+          }
+          if (i % 10 === 0) {
+            document.write('<br>');
+          }
+        }
+    
+function incrementCounter1() {
+  var counter = document.getElementById('counter1');
+  counter.innerText = parseInt(counter.innerText) + 1;
+}
+
+function incrementCounter2() {
+  var counter = document.getElementById('counter2');
+  counter.innerText = parseInt(counter.innerText) + 1;
+}
+
+
+</script>
+
+
+
+      </script>
+    </tbody>
+  </table>
+</body>
+</html>
