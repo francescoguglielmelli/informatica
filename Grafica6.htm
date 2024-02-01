@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let Conta1 = 0;
+        let Conta2 = 0;
+
+        function Click1() {
+            Conta1++;
+            alert("La Bomba è stata cliccata " + Conta1 + " volte.");
+        }
+        function Click2() {
+            Conta2++;
+            alert("La Pizza è stata cliccata " + Conta2 + " volte.");
+        }
+    </script>
+</head>
+<body>
+    <style>
+        body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+        }
+    
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      </style>
+    <div>
+        <img src="bomba.jpg"  onclick="Click1()" height="150px" width="150px">
+    </div>
+    <div>
+        <img src="pizza.jpg"  onclick="Click2()" height="150px" width="150px" text-align: center>
+    </div>
+</body>
+</html>
