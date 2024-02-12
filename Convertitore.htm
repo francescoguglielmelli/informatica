@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<input type="number" id="potenzaPannello" placeholder="Inserisci potenza del pannello in watt">
+	<input type="number" id="numeroPannelli" placeholder="Inserisci numero di pannelli">
+	<button onclick="calcolaPotenzaTotale()">Calcola Potenza Totale</button>
+	<p id="potenzaTotale"></p>
+
+	<script>
+		function calcolaPotenzaTotale() {
+			let potenzaPannello = document.getElementById("potenzaPannello").value;
+			let numeroPannelli = document.getElementById("numeroPannelli").value;
+
+			let potenzaTotale = potenzaPannello * numeroPannelli;
+
+			document.getElementById("potenzaTotale").innerHTML = "Potenza totale possibile: " + potenzaTotale + " watt";
+		}
+	</script>
+</body>
+</html>
