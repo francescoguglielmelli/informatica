@@ -1,0 +1,53 @@
+<!-- Scrivi un programma JavaScript che calcoli l'Indice di Massa Corporea (IMC) di una persona. Chiedi all'utente di inserire il proprio peso in kg e la propria altezza in metri. Calcola quindi l'IMC utilizzando la seguente formula e visualizza il risultato insieme a una classificazione approssimativa del peso: 
+Formula dell'IMC: 
+L'Indice di Massa Corporea (IMC) si calcola dividendo il peso in kg per il quadrato dell'altezza in metri. La formula è la seguente: IMC=peso/altezza2 
+Dove: 
+● peso 
+● peso è il peso della persona in kg. 
+● altezza 
+● altezza è l'altezza della persona in metri. 
+Classificazione del peso: 
+● IMC < 18.5: Sottopeso 
+● 18.5 ≤ IMC < 25: Normopeso 
+● 25 ≤ IMC < 30: Sovrappeso 
+● IMC ≥ 30: Obesità -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calcolatore del peso</title>
+</head>
+<body>
+<label for="peso">Inserisci il tuo peso in kg:</label>
+<input type="number" id="peso" name="peso"><br>
+
+<label for="altezza">Inserisci la tua altezza in metri:</label>
+<input type="number" id="altezza" name="altezza"><br>
+
+<button onclick="calcolaIMC()">Calcola IMC</button><br>
+
+<p id="risultato"></p>
+
+  <script>
+  function calcolaIMC() {
+      let peso = parseFloat(document.getElementById("peso").value);
+      let altezza = parseFloat(document.getElementById("altezza").value);
+
+      let imc = peso / (altezza * altezza);
+      let classificazione = "Sei in forma?";
+
+      if (imc < 18.5) {
+          classificazione = "Sottopeso";
+      } else if (imc >= 18.5 && imc < 25) {
+          classificazione = "Normopeso";
+      } else if (imc >= 25 && imc < 30) {
+          classificazione = "Sovrappeso";
+      } else {
+          classificazione = "Obesità";
+      }
+      document.getElementById("risultato").innerHTML = "Il tuo IMC è " + imc.toFixed(2) + ". Classificazione: " + classificazione;
+  }
+  </script>
+
+</body>
+</html>
