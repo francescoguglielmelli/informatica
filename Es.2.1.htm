@@ -1,0 +1,70 @@
+Presenta 3 bottoni,
+  Cliccando il primo bottone scrive a video un numero a tua scelta n e ricliccando lo stesso bottone riscrive il numero sommato di due (n+2) 
+  Per il secondo bottone la funzionalità è la medesima al primo ma al secondo click presenta il primo numero +3 
+  Per il terzo bottone +7 ad ogni click
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<label>Inserisci un numero:</label>
+<input type="number" id="numero" name="numero" min="0" max="100">
+<br> <br>
+<button onclick="increaseValue1()">Button 1</button>
+<button onclick="increaseValue2()">Button 2</button>
+<button onclick="increaseValue3()">Button 3</button>
+<p id="output"></p>
+
+<script>
+
+let x=0;
+let y=0;
+let z=0;
+let num=0;
+
+function increaseValue1(){
+  if(x==0) 
+  {
+   num = parseFloat(document.getElementById("numero").value);
+   num += 2;
+  z=0;
+  y=0;
+  x++;
+  }else{
+  num += 2;}
+  document.getElementById("output").innerText = num;
+}
+function increaseValue2(){
+  if(y==0)
+  {
+   num = parseFloat(document.getElementById("numero").value);
+   num += 3;
+  z=0;
+  x=0;
+  y++;
+  }else{
+  num += 3;}
+  document.getElementById("output").innerText = num;
+}
+function increaseValue3(){
+  if(z==0)
+  {
+   num = parseFloat(document.getElementById("numero").value);
+   num += 7;
+  x=0;
+  y=0;
+  z++;
+  }else{
+  num += 7;}
+  document.getElementById("output").innerText = num;
+}
+</script>
+</body>
+</html>
+
+//uso tre funzioni diverse dato che devo ogni volta che cambio bottone bisogna ripartire dal numero inserito, per partire dal numero inserito controllo che sia la prima volta che clicco il bottone e allo stesso tempo azzero i contatori degli altri bottoni in modo che se poi dovessi cambiare bottone ripartirei dal numero inserito.
+se e la prima volta che clicco prendo il numero inserito e lo sommo se e la seconda volta continuo incrementare num.
+(nota bene) durante questo continuo cliccare lo stesso i contatori (x,y,z) degli altri due bottoni sono azzerati e percio quando clicchero un altro bottone il controllo mi fara aggiornare il valore num al valore da me inserito all'inizio.
