@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<input type="text" id="raggio" placeholder="Inserisci il raggio del cerchio">
+	<button onclick="calcolaArea()">Calcola Area</button>
+	<p id="risultato"></p>
+
+	<script>
+		function calcolaArea() {
+			let raggio = document.getElementById('raggio').value;
+			let area = raggio * raggio * 3.14159; 
+			document.getElementById('risultato').innerText = "l'area del cerchio è di: "+ area;
+		}
+	</script>
+</body>
+</html>
