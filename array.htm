@@ -1,1 +1,42 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array1</title>
+</head>
+<body>
+ 
+   
+    <div>
+      <button id="b1" onclick="AddElementArray()" > Ordina un prodotto</button>
+      <br>   <br>
+      <button id="b2" onclick="RemoveElementArray()" > Elimina un prodotto</button>
+      <br>   <br>
+      <button id="b3" onclick="CountElementArray()" > conta gli elementi nell'array</button> 
+    </div> 
+   <p id="fruitsOut"</p> <p id ="out"></p> 
+    <script>
+      //metodi per gli array
+      //1) inserire un dato dentro l'array....Push
+      function AddElementArray(){
+        let nuovoElemento=prompt("inserisci un frutto");
+        fruits.push(nuovoElemento);
+        document.getElementById("fruitsOut").innerHTML=fruits;}
+        //2) rimuovere un dato dentro l'array....pop
+      function RemoveElementArray(){
+        fruits.pop();
+        document.getElementById("fruitsOut").innerHTML=fruits;
+      }
+      //3) contare il numero di elementi di un array
+      function CountElementArray()
+        {
+          const b=fruits.length;
+          document.getElementById("out").innerHTML=b;
+        }
+      let fruits=["Orange","Apple","Strawberry","Pear","Mango","kiwi"]
+       document.getElementById("fruitsOut").innerHTML=fruits;
+    </script>
+   
+</body>
+</html>
