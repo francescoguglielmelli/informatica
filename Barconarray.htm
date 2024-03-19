@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!DOCTYPE html> <!-- Definisce il tipo di documento HTML -->
+<html lang="en"> <!-- Imposta la lingua dell'HTML -->
+<head>
+  <meta charset="UTF-8"> <!-- Imposta la codifica dei caratteri -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Imposta la visualizzazione ottimale su dispositivi mobili -->
+</head>
+<body>
+  <h2>ORDINI</h2> <!-- Intestazione della pagina -->
+  <p id="drinksOut"></p> <!-- Paragrafo per mostrare l'elenco dei drink -->
+  <div>
+    <button id="addDrink">Aggiungi Drink</button> <!-- Bottone per aggiungere un drink -->
+    <br><br>
+    <button id="removeDrink">Rimuovi Drink</button> <!-- Bottone per rimuovere l'ultimo drink aggiunto -->
+    <br><br>
+    <button id="countDrink">Conta Drink</button> <!-- Bottone per contare il numero totale di drink -->
+     <br><br>
+    <button id="ordinaDrink">Ordina</button> <!-- Bottone per effettuare l'ordine -->
+  </div>
+  <p id="Ordini"></p> <!-- Paragrafo per mostrare l'elenco degli ordini -->
+  <p id="conta"></p> <!-- Paragrafo per mostrare il conteggio dei drink -->
+   <br><br>
+  <p id="congratulazioni"></p> <!-- Paragrafo per mostrare un messaggio di congratulazioni -->
+   <p id="dettagli""></p> <!-- Paragrafo per mostrare i dettagli dell'ordine -->
+  <p id="ordine""></p> <!-- Paragrafo per mostrare l'ordine effettuato -->
+
+
+  <script>
+
+    let drinks = ["1) Mojito", "2) Margarita", "3) Negroni", "4)Spritz","5)Pina Colada"]; // Definisce un array di drink disponibili
+    let orders = []; // Crea un array vuoto per gli ordini
+
+    function addItem(array, itemId) { // Definisce una funzione per aggiungere un drink agli ordini
+      let index = (parseInt(prompt("Inserisci il numero del drink che vuoi ordinare (1-" + (drinks.length) + "):")))-1; // Chiede all'utente di inserire il numero del drink da ordinare
+
+      while (isNaN(index) || index < 0 || index >= drinks.length) { // Verifica se l'input dell'utente è valido
+        index = (parseInt(prompt("Indice fuori limite, Nessuna bevanda è stata aggiunta. (1-" + (drinks.length) + "):")))-1; // Chiede all'utente di inserire un nuovo numero valido
+      }
+
+      const drink = drinks[index]; // Ottiene il drink selezionato
+      if (drink) {
+        orders.push(drink); // Aggiunge il drink agli ordini
+        updateList(orders, itemId); // Aggiorna la visualizzazione degli ordini sulla pagina
+      } else {
+        alert("Indice fuori limite, Nessuna bevanda è stata aggiunta."); // Mostra un avviso se l'indice del drink è fuori limite
+      }
+    }
+
+    function removeItem(array, itemId) { // Definisce una funzione per rimuovere l'ultimo drink dagli ordini
+      array.pop(); // Rimuove l'ultimo elemento dall'array degli ordini
+      updateList(array, itemId); // Aggiorna la visualizzazione degli ordini sulla pagina
+    }
+
+    function countItems(array, itemId) { // Definisce una funzione per contare il numero totale di drink negli ordini
+      const count = array.length; // Ottiene il numero di elementi nell'array degli ordini
+      updateList(array, itemId); // Aggiorna la visualizzazione degli ordini sulla pagina
+      document.getElementById("conta").textContent = count; // Mostra il conteggio dei drink sulla pagina
+    }
+
+    function updateList(array, itemId) { // Definisce una funzione per aggiornare la visualizzazione degli ordini sulla pagina
+      if(itemId=="ordine"){ // Se si sta visualizzando l'ordine effettuato
+      document.getElementById("congratulazioni").textContent = "CONGRATULAZIONI, IL TUO ORDINE E' STATO EFFETTUATO CON SUCCESSO!" // Mostra un messaggio di congratulazioni
+      document.getElementById("dettagli").textContent = "ECCO I DETTAGLI DEL TUO ORDINE:"; // Mostra i dettagli dell'ordine
+      }
+      document.getElementById(itemId).textContent = array.join(","); // Aggiorna il testo del paragrafo con gli ordini
+    }
+
+
+
+    updateList(drinks, "drinksOut"); // Aggiorna la visualizzazione dei drink disponibili sulla pagina
+    updateList(orders, "Ordini"); // Aggiorna la visualizzazione degli ordini sulla pagina
+
+    // Aggiunge eventi click ai bottoni per eseguire le azioni appropriate
+    document.getElementById("addDrink").addEventListener("click", () => addItem(orders, "Ordini")); // Aggiungi un drink agli ordini
+    document.getElementById("removeDrink").addEventListener("click", () => removeItem(orders, "Ordini")); // Rimuovi l'ultimo drink dagli ordini
+    document.getElementById("countDrink").addEventListener("click", () => countItems(orders, "Ordini")); // Conta il numero totale di drink negli ordini
+    document.getElementById("ordinaDrink").addEventListener("click", () => updateList(orders, "ordine")); // Effettua l'ordine completo
+  </script>
+</body>
+</html>
