@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di Frasi</title>
+    <!-- Stili CSS -->
+    <style>
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Pulsanti per aggiungere elementi e creare frasi -->
+    <button id="aggiungiSoggetto">Aggiungi Soggetto</button>
+    <button id="aggiungiVerbo">Aggiungi Verbo</button>
+    <button id="aggiungiComplemento">Aggiungi Complemento</button>
+    <button id="creaFraseSingola">Crea Frase Singola</button>
+    <button id="creaFraseCasuale" onclick="generaFraseCasuale()">Crea Frase Casuale</button>
+
+    <!-- Output della frase generata -->
+    <div id="output"></div>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Array per memorizzare soggetti, verbi e complementi
+        const soggetti = [];
+        const verbi = [];
+        const complementi = [];
+
+        // Elemento div per l'output della frase
+        const outputDiv = document.getElementById('output');
+
+        // Pulsanti per aggiungere elementi e creare frasi
+        const aggiungiSoggettoBtn = document.getElementById('aggiungiSoggetto');
+        const aggiungiVerboBtn = document.getElementById('aggiungiVerbo');
+        const aggiungiComplementoBtn = document.getElementById('aggiungiComplemento');
+        const creaFraseSingolaBtn = document.getElementById('creaFraseSingola');
+
+        // Funzione per generare una frase casuale
+        function generaFraseCasuale() {
+            // Verifica se ci sono elementi in ogni categoria
+            if (soggetti.length === 0 || verbi.length === 0 || complementi.length === 0) {
+                alert('Inserisci almeno un elemento in ogni categoria.');
+                return;
+            }
+
+            // Seleziona un soggetto, un verbo e un complemento casuali
+            const soggettoCasuale = getRandomElement(soggetti);
+            const verboCasuale = getRandomElement(verbi);
+            const complementoCasuale = getRandomElement(complementi);
+
+            // Crea la frase casuale
+            const fraseCasuale = `${soggettoCasuale} ${verboCasuale} ${complementoCasuale}.`;
+            outputDiv.textContent = fraseCasuale;
+        }
+
+        // Aggiungi event listener per aggiungere soggetti, verbi e complementi
+        aggiungiSoggettoBtn.addEventListener('click', () => {
+            const soggetto = prompt('Inserisci un soggetto:');
+            if (soggetto !== null && soggetto.trim() !== '') {
+                soggetti.push(soggetto);
+                stampaArray('Soggetti', soggetti);
+            }
+        });
+
+        aggiungiVerboBtn.addEventListener('click', () => {
+            const verbo = prompt('Inserisci un verbo:');
+            if (verbo !== null && verbo.trim() !== '') {
+                verbi.push(verbo);
+                stampaArray('Verbi', verbi);
+            }
+        });
+
+        aggiungiComplementoBtn.addEventListener('click', () => {
+            const complemento = prompt('Inserisci un complemento:');
+            if (complemento !== null && complemento.trim() !== '') {
+                complementi.push(complemento);
+                stampaArray('Complementi', complementi);
+            }
+        });
+
+        // Aggiungi event listener per creare una frase singola
+        creaFraseSingolaBtn.addEventListener('click', () => {
+            // Verifica se ci sono elementi in ogni categoria
+            if (soggetti.length === 0 || verbi.length === 0 || complementi.length === 0) {
+                alert('Inserisci almeno un elemento in ogni categoria.');
+                return;
+            }
+
+            // Crea una frase con il primo elemento di ogni categoria
+            const frase = `${soggetti[0]} ${verbi[0]} ${complementi[0]}.`;
+            outputDiv.textContent = frase;
+        });
+
+        // Funzione per stampare gli elementi di un array
+        function stampaArray(tipo, array) {
+            outputDiv.innerHTML += `<p><strong>${tipo}:</strong> ${array.join(', ')}</p>`;
+        }
+
+        // Funzione per ottenere un elemento casuale da un array
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+    </script>
+</body>
+</html>
+    
