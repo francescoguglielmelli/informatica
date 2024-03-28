@@ -1,138 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+ <!DOCTYPE html>
+    <html lang="en">
+    <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generatore di Frasi</title>
-    <!-- Stili CSS -->
-    <style>
-        button {
-            margin: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Pulsanti per aggiungere elementi e creare frasi -->
-    <button id="aggiungiSoggetto">Aggiungi Soggetto</button>
-    <button id="aggiungiVerbo">Aggiungi Verbo</button>
-    <button id="aggiungiComplemento">Aggiungi Complemento</button>
-    <button id="creaFraseSingola">Crea Frase Singola</button>
-    <button id="creaFraseCasuale" onclick="generaFraseCasuale()">Crea Frase Casuale</button>
-
-    <!-- Output della frase generata -->
-    <div id="output"></div> 
-  <br>
-   <div id="output1"></div>
-  <br>
-   <div id="output2"></div>
-  <br>
-   <div id="output3"></div>
-
-    <!-- Script JavaScript -->
-    <script>
-        // Array per memorizzare soggetti, verbi e complementi
-        const soggetti = [];
-        const verbi = [];
-        const complementi = [];
-
-        // Elemento div per l'output della frase
-        const outputDiv = document.getElementById('output');
-      const outputDiv1 = document.getElementById('output1');
-      const outputDiv2 = document.getElementById('output2');
-      const outputDiv3 = document.getElementById('output3');
-      
-
-        // Pulsanti per aggiungere elementi e creare frasi
-        const aggiungiSoggettoBtn = document.getElementById('aggiungiSoggetto');
-        const aggiungiVerboBtn = document.getElementById('aggiungiVerbo');
-        const aggiungiComplementoBtn = document.getElementById('aggiungiComplemento');
-        const creaFraseSingolaBtn = document.getElementById('creaFraseSingola');
-
-       //funzione che stampa tutte le possibili combinazioni casuali dei componenti inseriti 
-        function generaFraseCasuale() {
-            // Verifica se ci sono elementi in ogni categoria
-            if (soggetti.length === 0 || verbi.length === 0 || complementi.length === 0) {
-                alert('Inserisci almeno un elemento in ogni categoria.');
-                return;
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Generatore di Frasi</title>
+        <!-- Stili CSS -->
+        <style>
+            button {
+                margin: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
             }
-          outputDiv3.innerHTML = <p></p>;
-          for (let i = 0; i < soggetti.length; i++) {
-              for (let j = 0; j < verbi.length; j++) {
-                for (let k = 0; k < complementi.length; k++) {
-                  outputDiv3.innerHTML += <p>${soggetti[i]} ${verbi[j]} ${complementi[k]}</p>;
+        </style>
+    </head>
+
+    <body>
+        <!-- Pulsanti per aggiungere elementi e creare frasi -->
+        <button id="aggiungiSoggetto">Aggiungi Soggetto</button>
+        <button id="aggiungiVerbo">Aggiungi Verbo</button>
+        <button id="aggiungiComplemento">Aggiungi Complemento</button>
+        <button id="creaFraseSingola">Crea Frase Singola</button>
+        <button id="creaFraseCasuale" onclick="generaFraseCasuale()">Crea Frase Casuale</button>
+
+        <!-- Output della frase generata -->
+        <div id="output"></div> 
+      <br>
+       <div id="output1"></div>
+      <br>
+       <div id="output2"></div>
+      <br>
+       <div id="output3"></div>
+
+        <!-- Script JavaScript -->
+        <script>
+            // Array per memorizzare soggetti, verbi e complementi
+            const soggetti = [];
+            const verbi = [];
+            const complementi = [];
+
+            // Elemento div per l'output della frase
+            const outputDiv = document.getElementById('output');
+          const outputDiv1 = document.getElementById('output1');
+          const outputDiv2 = document.getElementById('output2');
+          const outputDiv3 = document.getElementById('output3');
+          
+
+            // Pulsanti per aggiungere elementi e creare frasi
+            const aggiungiSoggettoBtn = document.getElementById('aggiungiSoggetto');
+            const aggiungiVerboBtn = document.getElementById('aggiungiVerbo');
+            const aggiungiComplementoBtn = document.getElementById('aggiungiComplemento');
+            const creaFraseSingolaBtn = document.getElementById('creaFraseSingola');
+
+           //funzione che stampa tutte le possibili combinazioni casuali dei componenti inseriti 
+            function generaFraseCasuale() {
+                // Verifica se ci sono elementi in ogni categoria
+                if (soggetti.length === 0 || verbi.length === 0 || complementi.length === 0) {
+                    alert('Inserisci almeno un elemento in ogni categoria.');
+                    return;
+                }
+              outputDiv3.innerHTML = "<p></p>";
+              for (let i = 0; i < soggetti.length; i++) {
+                  for (let j = 0; j < verbi.length; j++) {
+                    for (let k = 0; k < complementi.length; k++) {
+                      outputDiv3.innerHTML += "<p>" + soggetti[i] + " " + verbi[j] + " " + complementi[k] + "</p>";
+                    }
+                  }
                 }
               }
+
+               
+
+            // Aggiungi event listener per aggiungere soggetti, verbi e complementi
+            aggiungiSoggettoBtn.addEventListener('click', () => {
+                const soggetto = prompt('Inserisci un soggetto:');
+                if (soggetto !== null && soggetto.trim() !== '') {
+                    soggetti.push(soggetto);
+                    stampaArray('Soggetti', soggetti,1);
+                }
+            });
+
+            aggiungiVerboBtn.addEventListener('click', () => {
+                const verbo = prompt('Inserisci un verbo:');
+                if (verbo !== null && verbo.trim() !== '') {
+                    verbi.push(verbo);
+                    stampaArray('Verbi', verbi,2);
+                }
+            });
+
+            aggiungiComplementoBtn.addEventListener('click', () => {
+                const complemento = prompt('Inserisci un complemento:');
+                if (complemento !== null && complemento.trim() !== '') {
+                    complementi.push(complemento);
+                    stampaArray('Complementi', complementi,3);
+                }
+            });
+
+            // Aggiungi event listener per creare una frase singola
+            creaFraseSingolaBtn.addEventListener('click', () => {
+                // Verifica se ci sono elementi in ogni categoria
+                if (soggetti.length === 0 || verbi.length === 0 || complementi.length === 0) {
+                    alert('Inserisci almeno un elemento in ogni categoria.');
+                    return;
+                }
+               outputDiv3.innerHTML = "<p></p>";
+              const min = Math.min(soggetti.length,verbi.length,complementi.length);
+                let n=0;
+                // Crea una frase con il primo elemento di ogni categoria
+              while(n<min){
+              outputDiv3.innerHTML += "<p>" + soggetti[n] + " " + verbi[n] + " " + complementi[n] + "</p>";
+                n++;
+              }
+               
+
+            });
+
+            // Funzione per stampare gli elementi di un array
+            function stampaArray(tipo, array,num) {
+              if(num==1)
+              {
+                outputDiv.innerHTML = "<p><strong>" + tipo + ":</strong> " + array.join(', ') + "</p>";
             }
-          }
-
-           
-        
-
-        // Aggiungi event listener per aggiungere soggetti, verbi e complementi
-        aggiungiSoggettoBtn.addEventListener('click', () => {
-            const soggetto = prompt('Inserisci un soggetto:');
-            if (soggetto !== null && soggetto.trim() !== '') {
-                soggetti.push(soggetto);
-                stampaArray('Soggetti', soggetti,1);
+              if(num==2)
+              {
+                 outputDiv1.innerHTML = "<p><strong>" + tipo + ":</strong> " + array.join(', ') + "</p>";
+              }
+              if(num==3)
+              {
+                 outputDiv2.innerHTML = "<p><strong>" + tipo + ":</strong> " + array.join(', ') + "</p>";
+              }
             }
-        });
-
-        aggiungiVerboBtn.addEventListener('click', () => {
-            const verbo = prompt('Inserisci un verbo:');
-            if (verbo !== null && verbo.trim() !== '') {
-                verbi.push(verbo);
-                stampaArray('Verbi', verbi,2);
-            }
-        });
-
-        aggiungiComplementoBtn.addEventListener('click', () => {
-            const complemento = prompt('Inserisci un complemento:');
-            if (complemento !== null && complemento.trim() !== '') {
-                complementi.push(complemento);
-                stampaArray('Complementi', complementi,3);
-            }
-        });
-
-        // Aggiungi event listener per creare una frase singola
-        creaFraseSingolaBtn.addEventListener('click', () => {
-            // Verifica se ci sono elementi in ogni categoria
-            if (soggetti.length === 0 || verbi.length === 0 || complementi.length === 0) {
-                alert('Inserisci almeno un elemento in ogni categoria.');
-                return;
-            }
-           outputDiv3.innerHTML = <p></p>;
-          const min = Math.min(soggetti.length,verbi.length,complementi.length);
-            let n=0;
-            // Crea una frase con il primo elemento di ogni categoria
-          while(n<min){
-          outputDiv3.innerHTML += <p>${soggetti[n]} ${verbi[n]} ${complementi[n]}</p>;
-            n++;
-          }
-           
-
-        });
-
-        // Funzione per stampare gli elementi di un array
-        function stampaArray(tipo, array,num) {
-          if(num==1)
-          {
-            outputDiv.innerHTML = <p><strong>${tipo}:</strong> ${array.join(', ')}</p>;
-        }
-          if(num==2)
-          {
-             outputDiv1.innerHTML = <p><strong>${tipo}:</strong> ${array.join(', ')}</p>;
-          }
-          if(num==3)
-          {
-             outputDiv2.innerHTML = <p><strong>${tipo}:</strong> ${array.join(', ')}</p>;
-          }
-        }
-      
-    </script>
-</body>
-</html>
+          
+        </script>
+    </body>
+    </html>
