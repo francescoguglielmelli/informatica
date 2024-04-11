@@ -1,11 +1,9 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generatore di Frasi</title>
-    <!-- Stili CSS -->
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -112,11 +110,11 @@
                 alert('Inserisci almeno un elemento in ogni categoria.');
                 return;
             }
-          outputDiv3.innerHTML = <p></p>;
+          outputDiv3.innerHTML = "<p></p>";
           for (let i = 0; i < soggetti.length; i++) {
               for (let j = 0; j < verbi.length; j++) {
                 for (let k = 0; k < complementi.length; k++) {
-                  outputDiv3.innerHTML += <p>${soggetti[i]} ${verbi[j]} ${complementi[k]}</p>;
+                  outputDiv3.innerHTML += "<p>${soggetti[i]} ${verbi[j]} ${complementi[k]}+</p>";
                 }
               }
             }
@@ -157,12 +155,12 @@
                 alert('Inserisci almeno un elemento in ogni categoria.');
                 return;
             }
-           outputDiv3.innerHTML = <p></p>;
+           outputDiv3.innerHTML = "<p></p>";
           const min = Math.min(soggetti.length,verbi.length,complementi.length);
             let n=0;
             // Crea una frase con il primo elemento di ogni categoria
           while(n<min){
-          outputDiv3.innerHTML += <p>${soggetti[n]} ${verbi[n]} ${complementi[n]}</p>;
+          outputDiv3.innerHTML += "<p>"+${soggetti[n]} ${verbi[n]} ${complementi[n]}+"</p>";
             n++;
           }
            
@@ -173,18 +171,22 @@
         function stampaArray(tipo, array,num) {
           if(num==1)
           {
-            outputDiv.innerHTML = <p><strong>${tipo}:</strong> ${array.join(', ')}</p>;
+            outputDiv.innerHTML = soggetti;    
         }
           if(num==2)
           {
-             outputDiv1.innerHTML = <p><strong>${tipo}:</strong> ${array.join(', ')}</p>;
+             outputDiv1.innerHTML = verbi;    
+            
           }
           if(num==3)
           {
-             outputDiv2.innerHTML = <p><strong>${tipo}:</strong> ${array.join(', ')}</p>;
+             outputDiv2.innerHTML = complementi;    
           }
         }
       
-    </script>
+</script>
 </body>
 </html>
+
+
+        
