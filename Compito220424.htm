@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Numeri Primi e Successivi</title>
+</head>
+<body>
+  <h1>Risultati</h1>
+  <div id="results">
+    <p id="even-numbers"></p>
+    <p id="odd-numbers"></p>
+    <p id="prime-numbers"></p>
+    <p id="next-primes"></p>
+    <p id="even-next-primes-count"></p>
+    <p id="prime-next-primes-count"></p>
+  </div>
+  <script>
+    // Inserire dentro un array i numeri pari da 1 a 1000
+    let evenNumbers = [];
+    for (let i = 2; i <= 1000; i += 2) {
+      evenNumbers.push(i);
+    }
+
+    // Inserire in un altro array i numeri dispari da 1 a 1000
+    let oddNumbers = [];
+    for (let i = 1; i <= 1000; i += 2) {
+      oddNumbers.push(i);
+    }
+
+    // Funzione per verificare se un numero è primo (Improved Efficiency)
+    function isPrime(num) {
+      if (num <= 1) return false;
+      if (num <= 3) return true; // Handle 2 and 3 efficiently
+      if (num % 2 === 0 || num % 3 === 0) return false; // Exclude multiples of 2 and 3
+
+      let i = 5;
+      while (i * i <= num) {
+        if (num % i === 0 || num % (i + 2) === 0) {
+          return false;
+        }
+        i += 6;
+      }
+      return true;
+    }
+
+    // Inserire in un altro array i numeri primi da 1 a 1000
+    let primeNumbers = [];
+    for (let i = 2; i <= 1000; i++) {
+      if (isPrime(i)) {
+        primeNumbers.push(i);
+      }
+    }
+
+    // Inserire in un altro array i successivi dei numeri primi da 1 a 1000
+    // e controllare quanti sono pari e quanti sono ancora primi
+    let nextPrimes = [];
+    let countEven = 0;
+    let countStillPrime = 0;
+    for (let i = 0; i < primeNumbers.length; i++) {
+      let nextNumber = primeNumbers[i] + 2; // Next potential prime (odd)
+      nextPrimes.push(nextNumber);
+      if (nextNumber % 2 === 0) {
+        countEven++;
+      } else if (isPrime(nextNumber)) {
+        countStillPrime++;
+      }
+    }
+
+    // Display results in HTML elements
+    document.getElementById("even-numbers").textContent = `Array numeri pari: ${evenNumbers}`;
+    document.getElementById("odd-numbers").textContent = `Array numeri dispari: ${oddNumbers}`;
+    document.getElementById("prime-numbers").textContent = `Array numeri primi: ${primeNumbers}`;
+    document.getElementById("next-primes").textContent = `Array successivi numeri primi: ${nextPrimes}`;
+    document.getElementById("even-next-primes-count").textContent = `Successivi pari: ${countEven}`;
+    document.getElementById("prime-next-primes-count").textContent = `Successivi primi: ${countStillPrime}`;
+  </script>
+</body>
+</html>
