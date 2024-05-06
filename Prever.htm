@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+    .quadratoRed {
+  background-color: rgb(239, 143, 126);
+  color: rgb(3, 0, 0);
+  border: 2px solid black;
+  margin: 20px;
+  height: 20px;
+  width: 20px;
+  padding: 5px;
+}
+.quadratoBlue {
+  background-color: rgb(97, 119, 244);
+  color: rgb(6, 0, 0);
+  border: 2px solid black;
+  margin: 20px;
+  height: 20px;
+  width: 20px;
+  padding: 5px;
+}
+
+</style>
+
+</head>
+<body>
+<script>
+let numerocasuale;
+for(let i=0;i<100;i++)
+{
+    numerocasuale=Math.floor(Math.random() * 100);
+ 
+ if (numerocasuale%2==0)
+ {
+    document.write("   <div class='quadratoRed'>"
++numerocasuale+
+    "</div>")  
+}
+else{
+document.write("   <div class='quadratoBlue'>"
++numerocasuale+
+    "</div>")  
+}
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>
