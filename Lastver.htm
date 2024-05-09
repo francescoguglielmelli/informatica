@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 Quadrati Colorati</title>
+    <style>
+        #contenitore {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .quadrato {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 5px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .quadrato:hover {
+            background-color: #f0f0f0;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .pari {
+            background-color: #e63946; /* Rosso scuro migliorato */
+        }
+
+        .dispari {
+            background-color: #63b8ff; /* Blu chiaro migliorato */
+        }
+
+        .multiplo7 {
+            background-color: #ff9900; /* Arancione per i multipli di 7 */
+        }
+
+        .primo {
+            background-color: #ffff00; /* Giallo */
+        }
+    </style>
+</head>
+<body>
+    <div id="contenitore">
+    </div>
+
+    <script>
+        // Funzione per controllare se un numero è primo
+        function isPrime(n) {
+            if (n <= 1) return false;
+            if (n <= 3) return true;
+            if (n % 2 == 0 || n % 3 == 0) return false;
+            for (let i = 5; i * i <= n; i += 6) {
+                if (n % i == 0 || n % (i + 2) == 0) return false;
+            }
+            return true;
+        }
+
+        // Creazione e compilazione dell'array numeri
+        const numeri = [];
+        for (let i = 1000; i <= 2040; i++) {
+            numeri.push(i);
+        }
+
+        // Creazione e colorazione dei quadrati
+        const contenitore = document.getElementById("contenitore");
+        for (let i = 0; i < numeri.length; i++) {
+            const numero = numeri[i];
+            const div = document.createElement("div");
+            div.classList.add("quadrato");
+
+            // Colorazione in base al numero
+            if (numero % 2 == 0) {
+                div.classList.add("pari");
+            } else {
+                div.classList.add("dispari");
+            }
+
+            if (numero % 7 == 0) {
+                div.classList.add("multiplo7");
+            }
+
+            if (isPrime(numero)) {
+                div.classList.add("primo");
+            }
+
+            div.textContent = numero;
+            contenitore.appendChild(div);
+        }
+    </script>
+</body>
+</html>
