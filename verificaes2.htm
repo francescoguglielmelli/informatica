@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeri Primi nei Quadrati</title>
+    <style>
+        .square {
+            width: 50px;
+            height: 50px;
+            display: inline-block ;
+            margin: 5px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            border: 1px solid black;
+        }
+        .prime {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="squares-container"></div>
+
+    <script>
+        const container = document.getElementById('squares-container');
+
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (num % 2 === 0 || num % 3 === 0) return false;
+            for (let i = 5; i * i <= num; i += 6) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+            }
+            return true;
+        }
+
+        for (let i = 1; i <= 200; i++) {
+            const square = document.createElement('div');
+            square.className = 'square';
+            if (isPrime(i)) {
+                square.classList.add('prime');
+                const link = document.createElement('a');
+                link.href = `prime.html`;
+                link.style.color = 'black';
+                link.textContent = i;
+                link.target = '_blank';
+                square.appendChild(link);
+            } else {
+                square.textContent = i;
+            }
+            container.appendChild(square);
+        }
+    </script>
+</body>
+</html>
+
+
