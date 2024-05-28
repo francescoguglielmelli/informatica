@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadrati con Numeri Casuali es:1</title>
+    <style>
+        .square {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            margin: 5px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            border: 1px solid #000;
+        }
+        .blu {
+            background-color: white;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="squares-container"></div>
+    <script>
+        const n = prompt("Inserisci un numero:");
+        const container = document.getElementById('squares-container');
+
+        for  (let i = 100; i <= 200; i++) {
+            const randomNum = Math.floor(Math.random() * 101) + 100;
+            const square = document.createElement('div');
+            square.className = 'square';
+            square.textContent = randomNum;
+            if (randomNum % 10 === 0) {
+                square.classList.add('blu');
+            }
+            container.appendChild(square);
+        }
+    </script>
+</body>
+</html>
